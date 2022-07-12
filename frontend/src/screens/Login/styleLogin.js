@@ -47,5 +47,6 @@ textLinks: {
     color: '#fff',
     textDecorationLine: 'underline',
     fontSize: 10
-}
+},
+
 })
