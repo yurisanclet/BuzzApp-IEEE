@@ -1,5 +1,8 @@
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import {Routes} from '../frontend/src/routes/';
+
+
 
 export default function App() {
   return (
