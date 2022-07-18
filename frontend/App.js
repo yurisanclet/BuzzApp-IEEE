@@ -1,20 +1,13 @@
+import { StatusBar } from 'react-native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import {Routes} from '../frontend/src/routes/';
 
-
+import {NavigationContainer} from '@react-navigation/native'
+import Routes from './SRC/routes';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-        <Routes></Routes>
-    </View>
+    <NavigationContainer>
+      <Routes/>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
