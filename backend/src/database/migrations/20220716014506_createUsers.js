@@ -1,7 +1,4 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+
 exports.up = function(knex) {
     return knex.schema.createTable("users", (table)=>{
       table.uuid("id").primary();
@@ -19,5 +16,7 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTable("users");  
+  return knex.schema.dropTable("users");
 };
+
+// yarn knex migrate:latest

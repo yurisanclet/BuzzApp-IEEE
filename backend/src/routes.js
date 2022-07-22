@@ -20,6 +20,4 @@ router.post("/listContacts/:id",auth, contactController.findAll);
 
 
 
-
 module.exports = router;
-

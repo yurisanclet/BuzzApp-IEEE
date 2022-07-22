@@ -1,6 +1,6 @@
-const knex = require('../database');
-const { v4 } = require('uuid');
-const bcrypt = require('bcryptjs');
+const knex = require("../database");
+const { v4 } = require("uuid");
+const bcrypt = require("bcryptjs");
 
 module.exports = { 
   async findAll(req, res){
@@ -18,12 +18,10 @@ module.exports = {
     return user;
   },
 
+
   async create(name, email, password, biography) { // rota post, envio de formularios
       const user = await knex("users").select("*").where({email}).first(); // verificando se o usuario ja existe
 
-      if(user){
-        throw new Error("Usuário já existe");
-      }
 
       const hash = await bcrypt.hash(password, 10);
       await knex("users").insert({ // inserindo no banco de dados.
@@ -33,8 +31,7 @@ module.exports = {
         biography,
         password: hash
       });
-
-      return "Usuário criado."
+      return "Usuário criado com sucesso.";
   },
 
   async update(id, name,password, biography) {
