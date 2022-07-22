@@ -6,7 +6,7 @@ const knex = {
             port: 3306,
             user : 'root',
             password: 'yuri1234',
-            database: 'usersdatabase',
+            database: 'databaseusers',
         },
         migrations: {
             tableName: 'migrations',
