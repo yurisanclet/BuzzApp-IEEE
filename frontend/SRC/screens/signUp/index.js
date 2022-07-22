@@ -11,35 +11,35 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   function handleChangeEmail(event){
-    setEmail(event.target.value);
+    setEmail(event.target.email);
   }
 
   function handleChangePassword(event){
-    setPassword(event.target.value);
+    setPassword(event.target.Text);
   }
 
   function handleChangeConfirmPassword(event){
-    setConfirmPassword(event.target.value);
+    setConfirmPassword(event.target.Text);
   }
 
   async function submit(event){
-    const login={
-      email,password, confirmPassword
+    const signUp={
+      email, password, confirmPassword
     }
     const res = await axios({
       method: "POST",
-     url: "/login",
+      url: "/signup",
       headers: {
           "content-Type": "aplication/json",
       },
-      data: JSON.stringify(login)
+      data: JSON.stringify(signUp)
     });
     if(res.status == 200){
       const {token}=res.data;
       await AsyncStorage.setItem("token",token);
 
     }else{
-      Alert.alert('senha ou usuário incorreto')
+      Alert.alert('Email ja cadastrado')
     }
   }
 

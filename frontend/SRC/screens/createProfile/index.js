@@ -4,22 +4,6 @@ import {Avatar} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios'; // n usado ainda
 
-const onReach_MAX_Length1 = (temp) => {
-  var tempLength = temp.length.toString();
-
-  if (tempLength == 120) {
-    Alert.alert('Limite de 120 caracteres atingido');
-  } // limite de caracteres da bio
-};
-const onReach_MAX_Length2 = (temp) => {
-  var tempLength = temp.length.toString();
-
-  if (tempLength == 50) {
-    Alert.alert('Limite de 50 caracteres atingido');
-  } // limite de caracteres do nome de usuário
-};
-
-
 import * as ImagePicker from 'expo-image-picker';
 //import axios from 'axios'; // n usado ainda
 

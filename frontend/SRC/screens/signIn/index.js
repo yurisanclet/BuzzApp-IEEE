@@ -9,11 +9,11 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
 
    function handleChangeEmail(event){
-    setEmail(event.target.value);
+    setEmail(event.target.email);
   }
 
   function handleChangePassword(event){
-    setPassword(event.target.value);
+    setPassword(event.target.Text);
   }
 
   async function submit(event){
