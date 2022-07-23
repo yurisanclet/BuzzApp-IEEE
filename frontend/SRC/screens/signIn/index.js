@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function SignIn() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
+ /* const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
    function handleChangeEmail(event){
@@ -35,7 +35,7 @@ export default function SignIn() {
     }else{
       Alert.alert('senha ou usuário incorreto')
     }
-  }
+  }*/
 
   return (
     <ImageBackground source={require('../../../assets/purplebackground.png')} style={styles.imgBackground}>
@@ -73,7 +73,7 @@ export default function SignIn() {
           />
         </View>
       
-        <TouchableOpacity style={styles.buttonStyle} onPress={submit}>
+        <TouchableOpacity style={styles.buttonStyle} /*onPress={submit}*/ onPress={() => navigation.navigate('PrivChat')}>
             <Text style={styles.textInput}> 
               Entrar     
             </Text> 

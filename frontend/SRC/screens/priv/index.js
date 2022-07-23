@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
-export default function priveChat() {
+export default function PrivChat() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.myBox}>
@@ -12,12 +14,15 @@ export default function priveChat() {
         <TouchableOpacity style={styles.buttonPrive}>
           <Text style={styles.priveText}>Privado</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonPubli}>
+        <TouchableOpacity style={styles.buttonPubli} onPress={() => navigation.navigate('PubliChat')}>
           <Text style={styles.publiText}>Publico</Text>
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity 
+        style={styles.addButton}
+        onPress={() => navigation.navigate('Menu')}
+        >
           <Text style={styles.addstyle}>
             +
           </Text>

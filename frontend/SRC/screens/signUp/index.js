@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function SignUp() {
 
-  const navigation = useNavigation();
-  const [email, setEmail] = useState('');
+const navigation = useNavigation();
+
+ /* const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -41,7 +42,7 @@ export default function SignUp() {
     }else{
       Alert.alert('Email ja cadastrado')
     }
-  }
+  }*/
 
   return (
     <ImageBackground source={require('../../../assets/purplebackground.png')} style={styles.imgBackground}>
@@ -65,8 +66,8 @@ export default function SignUp() {
           placeholderTextColor={"white"} 
           placeholder='E-mail'
           style={styles.textInput}
-          onChange={handleChangeEmail} 
-          value={email}
+          //onChange={handleChangeEmail} 
+         // value={email}
           >
           
           </TextInput>
@@ -78,8 +79,8 @@ export default function SignUp() {
           placeholder='Senha' 
           style={styles.textInput} 
           secureTextEntry={true} 
-          onChange={handleChangePassword} 
-          value={password}
+         // onChange={handleChangePassword} 
+          //value={password}
           /> 
         </View>
         <View style={styles.inputStyle}>
@@ -88,12 +89,15 @@ export default function SignUp() {
           placeholderTextColor={"white"} 
           placeholder='Confirme sua senha' 
           style={styles.textInput} secureTextEntry={true} 
-          onChange={handleChangeConfirmPassword}
-          value={password}
+          //onChange={handleChangeConfirmPassword}
+          //value={password}
           />
         </View>
-        <TouchableOpacity style={styles.buttonStyle} onPress={submit}>
-            <Text style={styles.textInput}> 
+        <TouchableOpacity style={styles.buttonStyle} /*onPress={submit}*/ onPress={() => navigation.navigate('CreateProfile')}>
+            <Text 
+            style={styles.textInput}
+            
+            > 
               Entrar     
             </Text> 
       </TouchableOpacity>

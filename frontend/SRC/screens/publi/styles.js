@@ -53,6 +53,7 @@ export const styles = StyleSheet.create({
     publiText: {
       fontSize: 16,
       fontWeight: 'bold',
+      
       padding: 7,
     },
   

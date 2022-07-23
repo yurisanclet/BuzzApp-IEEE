@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ImageBackground, TextInput, TouchableOpacity, Alert, Image} from 'react-native';
+import { Text, View, ImageBackground, TextInput, TouchableOpacity, Alert, Image} from 'react-native';
 import {Avatar} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
-import axios from 'axios'; // n usado ainda
-
-import * as ImagePicker from 'expo-image-picker';
+import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 //import axios from 'axios'; // n usado ainda
 
 const onReach_MAX_Length1 = (temp) => {
@@ -24,6 +23,7 @@ const onReach_MAX_Length2 = (temp) => {
 
 
 export default function CreateProfile() {
+  const navigation = useNavigation();
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
@@ -74,6 +74,7 @@ export default function CreateProfile() {
             placeholderTextColor={"white"} 
             placeholder='Nome'
             onChangeText={(item) => onReach_MAX_Length2(item)} // (text)=> setName(text)
+            //onChange={(text)=> setName(text)}
             defaultValue={name}
             style={styles.textInput}>
             </TextInput>
@@ -89,8 +90,10 @@ export default function CreateProfile() {
           </View>
         </View>
         <View>
-          <TouchableOpacity style={styles.buttonStyle}>
-            <Text style={styles.textInput}>
+          <TouchableOpacity style={styles.buttonStyle}  onPress={() => navigation.navigate('PrivChat')}>
+            <Text style={styles.textInput}
+        
+            >
               Criar Perfil
             </Text>
           </TouchableOpacity> 
@@ -100,65 +103,3 @@ export default function CreateProfile() {
     
   );
 }
-
-const styles = StyleSheet.create({
-  /*
-  buzzStyle: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  */
-  buzzBackgorund: {
-    width: 349,
-    height: 657,
-    backgroundColor: "#212124",
-    alignItems: 'center',
-    borderRadius: 61,
-  },
-  
-  inputStyle: { // antiga caixa menor
-    width: 319,
-    height: 54,
-    marginBottom: 31,
-    backgroundColor: "#565459",
-    borderRadius: 15,
-  },
-  
-  textStyles: {
-    fontSize: 20,
-    marginVertical: 15,
-    textAlign: 'center',
-    color: '#ffffff',
-    fontWeight: 'bold',
-    marginTop: 34,
-    marginBottom: 25,
-  },
-
-
-  textInput: {
-    fontSize: 14,
-    marginVertical: 15,
-    color: '#ffffff',
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-
-  buttonStyle:{
-      width: 319,
-      height: 54,
-      marginTop: 100,
-      backgroundColor: "#991AD4",
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 8,
-  },
-
-  imgBackground: {
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
