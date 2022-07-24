@@ -34,9 +34,13 @@ module.exports = {
       return "Usuário criado com sucesso.";
   },
 
-  async update(id, name,password, biography) {
+  async update(id, name,password, biography, emailToken) {
       const user = await knex("users").select("*").where({id}).first();
-      
+      const {email} = await knex("users").select("email").where({id}).first()
+
+      if (email !== emailToken){
+        throw new Error("Você não pode alterar outro usuário");
+      }
       if(!user){
           throw new Error("Usuário não existe.");
       }
@@ -53,11 +57,15 @@ module.exports = {
       return "Usuário atualizado."; 
   },
 
-  async delete(id){
+  async delete(id, emailToken){
       const user = await knex("users").select("*").where({id}).first();
-      
+      const {email} = await knex("users").select("email").where({id}).first();
+
       if (!user){
           throw new Error("Usuário não existe");
+      }
+      if (email !== emailToken){
+        throw new Error("Você não pode deletar outro usuário");
       }
       
       await knex("users").where({id}).delete(); // where({id}) para especificar o usuario a ser deletado

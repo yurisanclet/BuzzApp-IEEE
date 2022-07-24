@@ -23,6 +23,12 @@ function auth(req, res, next){
         }
         return next(); // caso não entre em nenhuma das condições de erro, o token é válido
     });
+
+    //let {email} = jwt.verify(token, "c8fc19bb-6b35-43a9-8dba-0e11cfce2729")
+    //const [email] = verify;
+    
+    
+    //console.log(email);
 }
 
 module.exports = auth;

@@ -7,7 +7,7 @@ const auth = require('./middleware/auth');
 
 
 
-router.get("/listUsers", userController.findAll);
+router.get("/listUsers", auth, userController.findAll);
 router.get("/listUser/:id", auth, userController.findOne);
 router.post("/signUp", userController.create);
 router.patch("/update/:id",auth, userController.update);
@@ -17,6 +17,7 @@ router.post("/signIn", loginController.login);
 
 router.post("/addContact/:id",auth, contactController.create);
 router.post("/listContacts/:id",auth, contactController.findAll);
+router.get("/findContact/:id", auth, contactController.findOne);
 
 
 
