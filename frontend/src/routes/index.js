@@ -7,6 +7,8 @@ import CreateProfile from "../screens/createProfile"
 import PrivChat from "../screens/priv"
 import PubliChat from "../screens/publi"
 import Menu from "../screens/menu"
+// import NewContact from "../screens/newContact"
+// import NewGroup from "../screens/newGroup" // ver se esta funcionando dps
 
 const Stack = createNativeStackNavigator();
 
@@ -54,7 +56,19 @@ export default function Routes (){
                 component={Menu}
                 options={{headerShown: false}}
             />
-
+            /*
+            <Stack.Screen
+                name="NewContact"
+                component={NewContact}
+                options={{headerShown: false}}
+            />
+            
+            <Stack.Screen
+                name="NewGroup"
+                component={NewGroup}
+                options={{headerShown: false}}
+            />
+            */
         </Stack.Navigator>
     )
 }
