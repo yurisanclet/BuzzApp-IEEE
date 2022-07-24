@@ -58,7 +58,7 @@ export default function Routes (){
                 component={Menu}
                 options={{headerShown: false}}
             />
-            /*
+
             <Stack.Screen
                 name="EditProfile"
                 component={EditProfile}
@@ -76,7 +76,7 @@ export default function Routes (){
                 component={NewGroup}
                 options={{headerShown: false}}
             />
-            */
+    
         </Stack.Navigator>
     )
 }

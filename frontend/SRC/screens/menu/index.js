@@ -1,4 +1,4 @@
-//import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
 Text,
 ImageBackground,
@@ -30,12 +30,12 @@ return (
         </TouchableOpacity>
         <TouchableOpacity 
         style={styles.buttonStyle}
-        /*onPress={() => navigation.navigate('NewContact')}*/>
+        onPress={() => navigation.navigate('NewContact')}>
         <Text style={styles.textInput}>Adicionar nova conversa</Text>
         </TouchableOpacity>
         <TouchableOpacity 
         style={styles.buttonStyle}
-        /*onPress={() => navigation.navigate('NewGroup')}*/>
+        onPress={() => navigation.navigate('NewGroup')}>
         <Text style={styles.textInput}>Adicionar novo grupo</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonStyle}>
