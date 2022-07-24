@@ -29,7 +29,7 @@ const onReach_MAX_Length2 = (temp) => {
   }
 };
 
-export default function App() {
+export default function EditProfile() {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
