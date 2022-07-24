@@ -9,22 +9,11 @@ export const styles = StyleSheet.create({
       borderRadius: 61,
     },
   
-    backStyle: {
-      backgroundColor: '#fff',
-      width: 70,
-      height: 25,
-      borderRadius: 8,
-      marginRight: 255,
-      marginBottom: 50,
-      alignItems: 'center',
-    },
-  
-    textBackStyle: {
-      color: '#991AD4',
-      fontSize: 14,
-      fontWeight: 'bold',
-      padding: 2,
-    },
+   returnStyle: {
+    marginRight: '80%',
+    marginBottom: '5%',
+    alignItems: 'center',
+  },
   
     buttonStyle: {
       width: 319,
