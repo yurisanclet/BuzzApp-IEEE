@@ -34,10 +34,10 @@ module.exports = {
       return "Usuário criado com sucesso.";
   },
 
-  async update(id, name,password, biography,emailToken) {
+  async update(id, name,password, biography, emailToken) {
       const user = await knex("users").select("*").where({id}).first();
-      const {email} = await knex("users").select("email").where({id}).first();
-      
+      const {email} = await knex("users").select("email").where({id}).first()
+
       if(!user){
           throw new Error("Usuário não existe.");
       }
@@ -59,7 +59,7 @@ module.exports = {
 
   async delete(id, emailToken){
       const user = await knex("users").select("*").where({id}).first();
-      const email = await knex("users").select("*").where({id}).first();
+      const {email} = await knex("users").select("email").where({id}).first();
 
       if (!user){
           throw new Error("Usuário não existe");

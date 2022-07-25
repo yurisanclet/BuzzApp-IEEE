@@ -11,9 +11,10 @@ module.exports = { // pegar as informações passadas nas rotas
     },
     
     async findOne(req, res) {
-        const { id } = req.params;
+        const {id} = req.params;
+        const { email } = req.body;
         try {
-            const response = await contactService.findOne(id);
+            const response = await contactService.findOne(id, email);
             return res.status(200).json(response);
         } catch(error) {
             return res.status(400).json({"error":error.message});

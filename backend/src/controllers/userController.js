@@ -1,3 +1,4 @@
+const auth = require("../middleware/auth");
 const userService = require("../services/userService");
 const jwt = require("jsonwebtoken");
 
@@ -11,16 +12,6 @@ module.exports = {
         }
     },
     
-    async findOne(req, res) {
-        const { id } = req.params;
-        try {
-            const response = await userService.findOne(id);
-            return res.status(200).json(response);
-        } catch(error) {
-            return res.status(400).json({"error":error.message});
-        }
-    },
-
     async findOne(req, res) {
         const { id } = req.params;
         try {
@@ -47,7 +38,7 @@ module.exports = {
 
         const authHeader = req.headers.authorization;
         const {scheme, token} = authHeader.split(" ");
-        const email = jwt.decode(token);
+        const {email} = jwt.decode(token);
 
         try {
             const response = await userService.update(id, name, password, biography, email);
@@ -62,7 +53,7 @@ module.exports = {
 
         const authHeader = req.headers.authorization;
         const {scheme, token} = authHeader.split(" ");
-        const email = jwt.decode(token);
+        const {email} = jwt.decode(token);
 
         try {
             const response = await userService.delete(id, email);

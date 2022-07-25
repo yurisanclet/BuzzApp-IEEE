@@ -36,9 +36,6 @@ module.exports = {
       throw new Error("Contato já adicionado");
     }
 
-    /*if(idUserr){
-      throw new Error("Usuário já adicionado");
-    }*/
     
     await knex("contactof").insert({ // inserindo no banco de dados.
       idUser1,
