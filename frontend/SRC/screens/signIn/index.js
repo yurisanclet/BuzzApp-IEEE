@@ -58,8 +58,8 @@ export default function SignIn() {
           placeholder='Insira seu e-mail' 
           style={styles.textInput} 
           autoCorrect={false} 
-          onChange={handleChangeEmail} 
-          value={email}
+          //onChange={handleChangeEmail} 
+          //value={email}
           />
         </View>
 
@@ -67,8 +67,8 @@ export default function SignIn() {
           <TextInput placeholderTextColor={"white"} 
           placeholder='Insira sua senha' style={styles.textInput} 
           autoCorrect={false} 
-          onChange={handleChangePassword} 
-          value={password}
+          //onChange={handleChangePassword} 
+          //value={password}
           secureTextEntry={true}
           />
         </View>

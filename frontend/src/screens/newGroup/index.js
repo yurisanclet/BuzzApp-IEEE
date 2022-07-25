@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 
-export default function App() {
+export default function NewGroup() {
   const navigation = useNavigation();
 
   return (

@@ -7,9 +7,9 @@ import CreateProfile from "../screens/createProfile"
 import PrivChat from "../screens/priv"
 import PubliChat from "../screens/publi"
 import Menu from "../screens/menu"
-// import EditProfile from "../screens/editProfile"
-// import NewContact from "../screens/newContact"
-// import NewGroup from "../screens/newGroup" // ver se esta funcionando dps
+import EditProfile from "../screens/editProfile"
+import NewContact from "../screens/newContact"
+import NewGroup from "../screens/newGroup" // ver se esta funcionando dps
 
 
 const Stack = createNativeStackNavigator();
