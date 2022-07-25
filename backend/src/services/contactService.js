@@ -14,12 +14,14 @@ module.exports = {
   },
   
   async findOne(id) {
-    const user = await knex("contactOf").select("").where({id}).first();
+    const idUser2 = await knex("users").select("id").where({email}).first();
+    const contact = await knex("contactOf").select("idUser2").where({idUser1: id}, {idUser2}).first();
+    const user = await knex("users").select("id","name", "biography", "email").where({email}).first();
     
-    if(!user){
-        throw new Error("Usuário não existe");
+    if(!contact){
+        throw new Error("Contato não existente.");
     }
- 
+    
     return user;
   },
 

@@ -16,7 +16,7 @@ router.delete("/delete/:id", auth, userController.delete);
 router.post("/signIn", loginController.login);
 
 router.post("/addContact/:id",auth, contactController.create);
-router.post("/listContacts/:id",auth, contactController.findAll);
+router.get("/listContacts/:id",auth, contactController.findAll);
 
 
 
