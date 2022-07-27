@@ -56,10 +56,55 @@ export default function CreateProfile() {
 
 
   if (hasGalleryPermission === false) {
-    return <Text>Sem acesso</Text>;
+    return (
+      <ImageBackground
+        source={require('../../../assets/purplebackground.png')}
+        style={styles.imgBackground}>
+        <SafeAreaView style={styles.buzzBackgorund}>
+          <Text style={styles.textStyles}>Perfil</Text>
+          <View>
+            <Avatar.Image
+              source={require('../../../assets/default-avatar.jpg')}
+              size={130}
+              marginBottom={45}
+            />
+          </View>
+          <View>
+            <View style={styles.inputStyle}>
+              <TextInput
+                autoCorrect={false}
+                placeholderTextColor={'white'}
+                placeholder="Nome de usuário"
+                maxLength={50}
+                onChangeText={
+                  ((item) => onReach_MAX_Length2(item), (text) => setName(text))
+                }
+                defaultValue={name}
+                style={styles.textInput}></TextInput>
+            </View>
+            <View style={styles.inputStyle}>
+              <TextInput
+                placeholderTextColor={'white'}
+                placeholder="Biografia"
+                maxLength={120}
+                onChangeText={
+                  ((item) => onReach_MAX_Length1(item), (text) => setBio(text))
+                }
+                defaultValue={bio}
+                style={styles.textInput}></TextInput>
+            </View>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.buttonStyle}>
+              <Text style={styles.textInput}>Criar Perfil</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </ImageBackground>
+    );
   }
-  
-  return (
+  else{
+    return (
     <ImageBackground source={require('../../../assets/purplebackground.png')} style={styles.imgBackground}>
       <View style={styles.buzzBackgorund}>
         <Text style={styles.textStyles}>Perfil</Text>
@@ -110,4 +155,6 @@ export default function CreateProfile() {
     </ImageBackground>
     
   );
+  }
+  
 }
