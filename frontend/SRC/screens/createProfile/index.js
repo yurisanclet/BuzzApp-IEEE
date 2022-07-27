@@ -13,6 +13,8 @@ const onReach_MAX_Length1 = (temp) => {
     Alert.alert('Limite de 120 caracteres atingido');
   } // limite de caracteres da bio
 };
+
+
 const onReach_MAX_Length2 = (temp) => {
   var tempLength = temp.length.toString();
 
@@ -28,6 +30,8 @@ export default function CreateProfile() {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+
+
   useEffect(() => {
     (async () => {
       const galleryStatus =
@@ -35,6 +39,8 @@ export default function CreateProfile() {
       setHasGalleryPermission(galleryStatus.status === 'granted');
     })();
   }, []); // perguntando se podemos ter acesso as fotos
+
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -47,6 +53,8 @@ export default function CreateProfile() {
       setImage(result.uri);
     }
   };
+
+
   if (hasGalleryPermission === false) {
     return <Text>Sem acesso</Text>;
   }

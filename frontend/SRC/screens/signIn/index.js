@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import { Text, View, ImageBackground, TextInput, TouchableOpacity, Alert} from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import api from '../../../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function SignIn() {
   const navigation = useNavigation();
- /* const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+  /*
    function handleChangeEmail(event){
     setEmail(event.target.email);
   }
@@ -15,27 +21,28 @@ export default function SignIn() {
   function handleChangePassword(event){
     setPassword(event.target.Text);
   }
+  */
 
-  async function submit(event){
-    const login={
-      email,password
+  async function loginSubmit(event){
+    if(email === '' || password === ''){
+        return Alert.alert('Falha ao efetuar o login!', 'Preencha todos os campos!')
     }
-    const res = await axios({
-      method: "POST",
-     url: "/login",
-      headers: {
-          "content-Type": "aplication/json",
-      },
-      data: JSON.stringify(login)
-    });
-    if(res.status == 200){
-      const {token}=res.data;
-      await AsyncStorage.setItem("token",token);
+    
+    const loginData={
+      email: email,
+      password: password
+    }
 
-    }else{
-      Alert.alert('senha ou usuário incorreto')
+    try {
+      const response = await api.post('/signIn', loginData)
+      console.log(response.data);
+      AsyncStorage.setItem("TOKEN", response.data.token);
+      navigation.navigate('CreateProfile');
+    } catch (err) {
+      console.log(err);
+      Alert.alert('ERRO', 'Senha ou usuário incorreto!')
     }
-  }*/
+  }
 
   return (
     <ImageBackground source={require('../../../assets/purplebackground.png')} style={styles.imgBackground}>
@@ -58,8 +65,8 @@ export default function SignIn() {
           placeholder='Insira seu e-mail' 
           style={styles.textInput} 
           autoCorrect={false} 
-          //onChange={handleChangeEmail} 
-          //value={email}
+          value={email}
+          onChangeText={value => setEmail(value)} 
           />
         </View>
 
@@ -67,17 +74,17 @@ export default function SignIn() {
           <TextInput placeholderTextColor={"white"} 
           placeholder='Insira sua senha' style={styles.textInput} 
           autoCorrect={false} 
-          //onChange={handleChangePassword} 
-          //value={password}
+          value={password}
+          onChangeText={value => setPassword(value)} 
           secureTextEntry={true}
           />
         </View>
       
-        <TouchableOpacity style={styles.buttonStyle} /*onPress={submit}*/ onPress={() => navigation.navigate('PrivChat')}>
+        <TouchableOpacity style={styles.buttonStyle} onPress={loginSubmit}>
             <Text style={styles.textInput}> 
               Entrar     
             </Text> 
-      </TouchableOpacity>
+        </TouchableOpacity>
 
         
       </View>

@@ -31,7 +31,8 @@ module.exports = {
         biography,
         password: hash
       });
-      return "Usuário criado com sucesso.";
+      
+      return  "Usuário criado com sucesso!";
   },
 
   async update(id, name,password, biography, emailToken) {

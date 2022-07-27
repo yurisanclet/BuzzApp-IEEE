@@ -23,9 +23,9 @@ module.exports = {
     },
 
     async create(req, res) {
-        const {name, email, password, biography} = req.body; // método de desconstrução de objetos.    
+        const {nameUser, emailUser, passwordUser, biographyUser } = req.body; // método de desconstrução de objetos.    
         try {
-            const response  = await userService.create(name, email, password, biography); 
+            const response  = await userService.create(nameUser, emailUser, passwordUser, biographyUser); 
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error": error.message});
