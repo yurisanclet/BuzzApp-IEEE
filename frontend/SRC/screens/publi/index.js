@@ -8,7 +8,9 @@ export default function PubliChat() {
   return (
     <View style={styles.container}>
       <View style={styles.myBox}>
-        <Text style={styles.myText}> Meus chats </Text>
+        <TouchableOpacity>
+          <Text style={styles.myText}> Adicionar contato </Text>
+        </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity style={styles.buttonPrive} onPress={() => navigation.navigate('PrivChat')}>

@@ -28,7 +28,16 @@ return (
         onPress={() => navigation.navigate('EditProfile')}>
           <Text style={styles.textInput}>Editar perfil</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
+        
+        <TouchableOpacity style={styles.buttonStyle}>
+        <Text style={styles.textInput}>EXCLUIR MINHA CONTA</Text>
+        </TouchableOpacity>
+    </SafeAreaView>
+    </ImageBackground>
+);
+}
+
+/*<TouchableOpacity 
         style={styles.buttonStyle}
         onPress={() => navigation.navigate('NewContact')}>
         <Text style={styles.textInput}>Adicionar nova conversa</Text>
@@ -37,11 +46,4 @@ return (
         style={styles.buttonStyle}
         onPress={() => navigation.navigate('NewGroup')}>
         <Text style={styles.textInput}>Adicionar novo grupo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonStyle}>
-        <Text style={styles.textInput}>EXCLUIR MINHA CONTA</Text>
-        </TouchableOpacity>
-    </SafeAreaView>
-    </ImageBackground>
-);
-}
+        </TouchableOpacity>*/ 
