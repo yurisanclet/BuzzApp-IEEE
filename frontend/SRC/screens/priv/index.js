@@ -2,13 +2,26 @@ import * as React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import {useState, useEffect} from 'react';
 
 export default function PrivChat() {
   const navigation = useNavigation();
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+
+      const addContact = async () => {
+
+      }
+  })
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.myBox}>
-        <Text style={styles.myText}> Meus chats </Text>
+        <TouchableOpacity>
+          <Text style={styles.myText}> Adicionar contato </Text>
+        </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity style={styles.buttonPrive}>

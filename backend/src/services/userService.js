@@ -7,7 +7,7 @@ module.exports = {
     const users = await knex("users").select("id", "name", "email", "biography");
     return users;
   },
-  
+  /*
   async findOne(id) {
     const user = await knex("users").select("id", "name", "email", "biography").where({id}).first();
     
@@ -17,11 +17,20 @@ module.exports = {
  
     return user;
   },
-
+*/
 
   async create(name, email, password, biography) { // rota post, envio de formularios
       const user = await knex("users").select("*").where({email}).first(); // verificando se o usuario ja existe
-    
+      
+      if(user){
+        throw new Error('Usuário já existente')
+      }
+
+      //console.log(name)
+      //console.log(email)
+      //console.log(password)
+      // console.log(biography)
+      
       const hash = await bcrypt.hash(password, 10);
       await knex("users").insert({ // inserindo no banco de dados.
         id: v4(), // gera um id aleatorio criptografado

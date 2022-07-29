@@ -2,11 +2,11 @@ const knex = require('../database');
 
 
 module.exports = { 
-  async findAll(idUser1){
-    const contactsArray = await knex("contactOf").select("idUser2").where({idUser1});
+  async findAll(emailUser1){
+    const contactsArray = await knex("contactOf").select("emailUser2").where({emailUser1});
     let contacts = [];
 
-    contactsArray.forEach((id, index) => {
+    contactsArray.forEach((email, index) => {
          contacts[index] = id.idUser2;
     });
     console.log(contacts);
@@ -25,14 +25,18 @@ module.exports = {
     return user;
   },
 
-  async create(email, emailAdd) { // rota post, envio de formularios
+  async create(emailUser, emailAdd) { // rota post, envio de formularios
 
-    const emailUser = await knex("users").select("*").where({email}).first(); // Usuário que chamou a função
-    const emailUserAdd = await knex("users").select("*").where({emailAdd}).first(); // Usuário a ser adicionado
-    const emailUser1 = emailUser.email;
-    const emailUser2 = emailUserAdd.email;
-    
-    if(await knex("contactOf").select("emailUser2").where({emailUser1}).first() === emailUser2 || await knex("contactOf").select("emailUser1").where({emailUser2 : emailUser1}).first() === emailUser1){
+    /*const emailUser = await knex("users").select("*").where({email}).first(); // Usuário que chamou a função
+    const emailUserAdd = await knex("users").select("*").where({email: emailAdd}).first(); // Usuário a ser adicionado*/
+    const emailUser1 = emailUser;
+    const emailUser2 = emailAdd;
+
+    if (!await knex("users").select("*").where({email:emailUser2}).first()){
+      throw new Error("Usuário inexistente");
+    }
+  
+    if(await knex("contactOf").select("emailUser2").where({emailUser1}).first() === emailUser2){
       throw new Error("Contato já adicionado");
     }
 

@@ -1,34 +1,47 @@
 // middleware -> permite o acesso ou não a determinadas rotas.
 const jwt = require('jsonwebtoken');
 
-function auth(req, res, next){
-    let authHeader = req.headers.authorization;
-    if (!authHeader){
-        return res.status(401).json({"error": "Token não fornecido"});
-    }
-
-    const parts = authHeader.split(" ");
-    if (!parts.length == 2){
-        return res.status(401).json({"error": "Token inválido"});
-    }
-
-    const [scheme, token] = parts;
-    if (!scheme == "Bearer"){
-        return res.status(401).json({"error": "Token mal formatado"});
-    }
-
-    jwt.verify(token, "c8fc19bb-6b35-43a9-8dba-0e11cfce2729", (error)=>{
-        if (error){
-          return res.status(401).json({"error": "Token inválido"});
+    function auth(req, res, next){
+        let authHeader = req.headers.authorization;
+        if (!authHeader){
+            return res.status(401).json({"error": "Token não fornecido"});
         }
-        return next(); // caso não entre em nenhuma das condições de erro, o token é válido
-    });
 
-    //let {email} = jwt.verify(token, "c8fc19bb-6b35-43a9-8dba-0e11cfce2729")
-    //const [email] = verify;
-    
-    
-    //console.log(email);
-}
+        const parts = authHeader.split(" ");
+        if (!parts.length == 2){
+            return res.status(401).json({"error": "Token inválido"});
+        }
 
-module.exports = auth;
+        const [scheme, token] = parts;
+        if (!scheme == "Bearer"){
+            return res.status(401).json({"error": "Token mal formatado"});
+        }
+
+        jwt.verify(token, "c8fc19bb-6b35-43a9-8dba-0e11cfce2729", (error)=>{
+            if (error){
+            return res.status(401).json({"error": "Token inválido"});
+            }
+            return next(); // caso não entre em nenhuma das condições de erro, o token é válido
+        });
+
+        //let {email} = jwt.verify(token, "c8fc19bb-6b35-43a9-8dba-0e11cfce2729")
+        //const [email] = verify;
+        
+        
+        //console.log(email);
+    }
+
+    function verifyEmail(emailUser, tk){ //passando o email a ser verificado e o token
+            
+            const parts = tk.split(" ")
+            const [scheme, token] = parts;
+            const {email} = jwt.decode(token);
+            if (emailUser != email){
+                throw new Error("Algo deu errado");
+            }
+    }
+
+    module.exports = {
+        auth: auth,
+        verifyEmail: verifyEmail
+    };

@@ -9,17 +9,17 @@ const auth = require('./middleware/auth');
 
 
 router.get("/listUsers", userController.findAll);
-router.get("/listUser/:id", auth, userController.findOne);
+router.get("/listUser/:id", auth.auth, userController.findOne);
 router.post("/signUp", userController.create);
-router.patch("/update/:emailUser",auth, userController.update);
-router.delete("/delete/:email", auth, userController.delete);
+router.put("/update/:emailUser",auth.auth, userController.update);
+router.delete("/deleteUser/:email", auth.auth, userController.delete);
 router.post("/signIn", loginController.login);
 
-router.post("/addContact/:emailUser",auth, contactController.create);
-router.get("/listContacts/:id",auth, contactController.findAll);
+router.post("/addContact/:emailUser",auth.auth, contactController.create);
+router.get("/listContacts/:emailUser",auth.auth, contactController.findAll);
 
-router.get("/listPrivateChats/:id", auth, messageController.listPrivateChats);
-router.post("/sendMessage/:id", auth, messageController.sendMessage);
+router.get("/listPrivateChats/:id", auth.auth, messageController.listPrivateChats);
+router.post("/sendMessage/:id", auth.auth, messageController.sendMessage);
 
 
 module.exports = router;
