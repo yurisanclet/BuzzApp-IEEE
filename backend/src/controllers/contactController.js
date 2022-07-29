@@ -22,10 +22,11 @@ module.exports = { // pegar as informações passadas nas rotas
     },
 
     async create(req, res) {
-        const {email} = req.body; // método de desconstrução de objetos. 
-        const {id} = req.params;   
+        const {email} = req.params; // método de desconstrução de objetos.
+        const {emailAdd} = req.body; 
+        // const {id} = req.params;   
         try {
-            const response  = await contactService.create(email, id); 
+            const response  = await contactService.create(email, emailAdd); 
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error": error.message});

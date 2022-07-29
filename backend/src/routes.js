@@ -14,7 +14,7 @@ router.patch("/update/:emailUser",auth, userController.update);
 router.delete("/delete/:id", auth, userController.delete);
 router.post("/signIn", loginController.login);
 
-router.post("/addContact/:id",auth, contactController.create);
+router.post("/addContact/:emailUser",auth, contactController.create);
 router.get("/listContacts/:id",auth, contactController.findAll);
 
 

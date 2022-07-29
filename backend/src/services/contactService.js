@@ -25,21 +25,21 @@ module.exports = {
     return user;
   },
 
-  async create(email, id) { // rota post, envio de formularios
+  async create(email, emailAdd) { // rota post, envio de formularios
 
-    const idUser = await knex("users").select("id").where({id}).first(); // Usuário que chamou a função
-    const idUserAdd = await knex("users").select("id").where({email}).first(); // Usuário a ser adicionado
-    const idUser1 = idUser.id;
-    const idUser2 = idUserAdd.id;
+    const emailUser = await knex("users").select("*").where({email}).first(); // Usuário que chamou a função
+    const emailUserAdd = await knex("users").select("*").where({emailAdd}).first(); // Usuário a ser adicionado
+    const emailUser1 = emailUser.email;
+    const emailUser2 = emailUserAdd.email;
     
-    if(await knex("contactOf").select("idUser2").where({idUser1}).first() === idUser2 || await knex("contactOf").select("idUser1").where({idUser2: idUser1}).first() === idUser1){
+    if(await knex("contactOf").select("emailUser2").where({emailUser1}).first() === emailUser2 || await knex("contactOf").select("emailUser1").where({emailUser2 : emailUser1}).first() === emailUser1){
       throw new Error("Contato já adicionado");
     }
 
     
     await knex("contactof").insert({ // inserindo no banco de dados.
-      idUser1,
-      idUser2
+      emailUser1,
+      emailUser2
     });
     
 
