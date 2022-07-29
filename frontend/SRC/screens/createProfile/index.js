@@ -46,25 +46,22 @@ export default function CreateProfile({route}) {
 
 
   async function submitProfile(){
-      if(name == ''){
-         return Alert.alert("Erro", "Coloque o seu nome!");
-      }
-
-      await AsyncStorage.setItem("@userName", name)
-      await AsyncStorage.setItem("@userBio", bio)
-
       const data = {
-        name: name,
-        biography: bio
+        nameUser: name,
+        biographyUser: bio
+      
       }
 
       console.log(data)
       const emailResponse = await AsyncStorage.getItem('@email')
+      
+      await AsyncStorage.setItem("@userName", name)
+      await AsyncStorage.setItem("@userBio", bio)
 
       console.log(emailResponse)
       
       try {
-          const response = await api.patch(`/update/${emailResponse}`, data);
+          const response = await api.put(`/update/${emailResponse}`, data);
           console.log(response.data);
           navigation.navigate("PrivChat");
       } catch (error) {

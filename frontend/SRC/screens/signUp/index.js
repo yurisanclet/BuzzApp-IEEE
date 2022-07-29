@@ -27,19 +27,19 @@ const navigation = useNavigation();
           emailUser: email,
           passwordUser: password,
           biographyUser: '',
-          nameUser: '',
+          nameUser: ''
         }
-
+        
       if(data.biographyUser == '' && data.nameUser == ''){  
         
         try {
           const response = await api.post('/signUp', data)
-              console.log(response.data);
-              Alert.alert("Sucesso", "Usuário criado com sucesso!")
-              navigation.navigate('SignIn');
+          console.log(response.data);
+          Alert.alert("Sucesso", "Usuário criado com sucesso!")
+          navigation.navigate('SignIn');
         } catch (error) {
-              Alert.alert("ERRO", "Usuário já cadastrado!")
-              console.log(error);
+          Alert.alert("ERRO", "Usuário já cadastrado!")
+          console.log(error);
         }
       }
   }

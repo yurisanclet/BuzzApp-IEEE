@@ -13,7 +13,9 @@ import { Avatar } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
 import  AsyncStorage  from '@react-native-async-storage/async-storage';
+import api from '../../../api';
 // import axios from 'axios'; // n usado ainda
+
 /*
 const onReach_MAX_Length1 = (temp) => {
   var tempLength = temp.length.toString();
@@ -30,17 +32,35 @@ const onReach_MAX_Length2 = (temp) => {
   }
 };
 */
+
 export default function EditProfile() {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-
-  const userName =  AsyncStorage.getItem('@userName');
-  const userBio =   AsyncStorage.getItem('@userBio');
+  
 
   async function editSubmit(){
+    const data = {
+      nameUser: name,
+      biographyUser: bio
+    
+    }
 
+    console.log(data)
+    const emailResponse = await AsyncStorage.getItem('@email')
+    
+
+    console.log(emailResponse)
+    
+    try {
+        const response = await api.put(`/update/${emailResponse}`, data);
+        console.log(response.data);
+        navigation.navigate("PrivChat");
+    } catch (error) {
+        console.log(error);
+        Alert.alert("ERRO");
+    }
   }
 
 
@@ -100,7 +120,7 @@ export default function EditProfile() {
               maxLength={50}
               //onChangeText={(item) => onReach_MAX_Length2(item)}
               onChangeText={value => setName(value)}
-              value={userName}
+              value={name}
               style={styles.textInput}>
             </TextInput>
           </View>
@@ -111,7 +131,7 @@ export default function EditProfile() {
               maxLength={120}
               //onChangeText={(item) => onReach_MAX_Length1(item)}
               onChangeText={value => setBio(value)}
-              value={userBio}
+              value={bio}
               style={styles.textInput}></TextInput>
           </View>
         </View>

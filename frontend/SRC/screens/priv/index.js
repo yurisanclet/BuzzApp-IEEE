@@ -4,7 +4,7 @@ import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import {useState, useEffect} from 'react';
 
-export default function PrivChat() {
+export default function PrivChat({router}) {
   const navigation = useNavigation();
   const [contacts, setContacts] = useState([]);
 
@@ -15,7 +15,6 @@ export default function PrivChat() {
       }
   })
   
-
   return (
     <View style={styles.container}>
       <View style={styles.myBox}>

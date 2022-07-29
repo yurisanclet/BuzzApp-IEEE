@@ -29,6 +29,7 @@ export default function SignIn() {
       const {data: {token}} = await api.post('/signIn', loginData)
       console.log(token)
       api.defaults.headers.Authorization = `Bearer ${token}`
+      await AsyncStorage.setItem('@token', token)
       await AsyncStorage.setItem("@email", email);
       navigation.navigate('CreateProfile');
     } catch (error) {
