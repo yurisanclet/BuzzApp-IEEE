@@ -5,8 +5,8 @@
 exports.up = function(knex) {
 
     return knex.schema.createTable("contactof", (table)=>{
-      table.uuid("idUser1");
-      table.uuid("idUser2");
+      table.uuid("idUser1").notNullable();
+      table.uuid("idUser2").notNullable();
       table.unique(["idUser1", "idUser2"]);
     })
 };
