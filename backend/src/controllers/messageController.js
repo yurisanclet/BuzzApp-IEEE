@@ -1,21 +1,25 @@
 const auth = require("../middleware/auth");
-const userService = require("../services/userService");
+const messageService = require("../services/messageService");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-    async findAll(req, res) {
+    async listPrivateChats(req, res) {
+        const {id} = req.params;
         try {
-            const response = await userService.findAll();
+            const response = await messageService.listPrivateChats(id);
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error": error.message});
         }
     },
     
-    async findOne(req, res) {
+    async sendMessage(req, res) {
         const { id } = req.params;
+        const {toId} = req.body;
+        const {message} = req.body;
+        
         try {
-            const response = await userService.findOne(id);
+            const response = await messageService.sendMessage(id, toId, message);
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error": error.message});
@@ -52,15 +56,14 @@ module.exports = {
     },
 
     async delete(req, res){
-        const { email: myEmail } = req.params;
+        const { id } = req.params;
 
         const authHeader = req.headers.authorization;
-        const parts = authHeader.split(" ");
-        const [scheme, token] = parts;
+        const {scheme, token} = authHeader.split(" ");
         const {email} = jwt.decode(token);
 
         try {
-            const response = await userService.delete(myEmail, email);
+            const response = await userService.delete(id, email);
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error":error.message});

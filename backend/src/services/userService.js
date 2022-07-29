@@ -3,7 +3,7 @@ const { v4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 
 module.exports = { 
-  async findAll(req, res){
+  async findAll(){
     const users = await knex("users").select("id", "name", "email", "biography");
     return users;
   },
@@ -57,9 +57,9 @@ module.exports = {
       return "Usuário atualizado."; 
   },
 
-  async delete(id, emailToken){
-      const user = await knex("users").select("*").where({id}).first();
-      const {email} = await knex("users").select("email").where({id}).first();
+  async delete(email, emailToken){
+      const user = await knex("users").select("*").where({email}).first();
+      //const {email} = await knex("users").select("email").where({id}).first();
 
       if (!user){
           throw new Error("Usuário não existe");
@@ -69,7 +69,7 @@ module.exports = {
           throw new Error("Impossível deletar um outro usuário.");
       }
 
-      await knex("users").where({id}).delete(); // where({id}) para especificar o usuario a ser deletado
+      await knex("users").where({email}).delete(); // where({id}) para especificar o usuario a ser deletado
       return "Usuário deletado";
   }
 }
