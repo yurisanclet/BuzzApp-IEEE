@@ -10,9 +10,8 @@ const auth = require('./middleware/auth');
 router.get("/listUsers", userController.findAll);
 router.get("/listUser/:id", auth, userController.findOne);
 router.post("/signUp", userController.create);
-router.patch("/update/:id",auth, userController.update);
+router.patch("/update/:emailUser",auth, userController.update);
 router.delete("/delete/:id", auth, userController.delete);
-
 router.post("/signIn", loginController.login);
 
 router.post("/addContact/:id",auth, contactController.create);

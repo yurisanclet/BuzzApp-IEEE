@@ -13,33 +13,26 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
 
 
-  /*
-   function handleChangeEmail(event){
-    setEmail(event.target.email);
-  }
-
-  function handleChangePassword(event){
-    setPassword(event.target.Text);
-  }
-  */
-
   async function loginSubmit(event){
     if(email === '' || password === ''){
         return Alert.alert('Falha ao efetuar o login!', 'Preencha todos os campos!')
     }
     
+    await AsyncStorage.setItem("@userEmail", email)
+
     const loginData={
       email: email,
       password: password
     }
 
     try {
-      const response = await api.post('/signIn', loginData)
-      console.log(response.data);
-      AsyncStorage.setItem("TOKEN", response.data.token);
+      const {data: {token}} = await api.post('/signIn', loginData)
+      console.log(token)
+      api.defaults.headers.Authorization = `Bearer ${token}`
+      await AsyncStorage.setItem("@email", email);
       navigation.navigate('CreateProfile');
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
       Alert.alert('ERRO', 'Senha ou usuário incorreto!')
     }
   }

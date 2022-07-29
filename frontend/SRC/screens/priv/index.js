@@ -19,6 +19,10 @@ export default function PrivChat() {
         </TouchableOpacity>
       </View>
       <View>
+        <Text>OLA MUNDO</Text>
+
+      </View>
+      <View>
         <TouchableOpacity 
         style={styles.addButton}
         onPress={() => navigation.navigate('Menu')}

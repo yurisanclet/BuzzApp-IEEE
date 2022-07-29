@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, ImageBackground, TextInput, TouchableOpacity, Alert, Image} from 'react-native';
+import {SafeAreaView, Text, View, ImageBackground, TextInput, TouchableOpacity, Alert, Image} from 'react-native';
 import {Avatar} from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //import axios from 'axios'; // n usado ainda
+import api from '../../../api';
 
 const onReach_MAX_Length1 = (temp) => {
   var tempLength = temp.length.toString();
@@ -24,12 +26,13 @@ const onReach_MAX_Length2 = (temp) => {
 };
 
 
-export default function CreateProfile() {
+export default function CreateProfile({route}) {
   const navigation = useNavigation();
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+  
 
 
   useEffect(() => {
@@ -39,6 +42,36 @@ export default function CreateProfile() {
       setHasGalleryPermission(galleryStatus.status === 'granted');
     })();
   }, []); // perguntando se podemos ter acesso as fotos
+
+
+
+  async function submitProfile(){
+      if(name == ''){
+         return Alert.alert("Erro", "Coloque o seu nome!");
+      }
+
+      await AsyncStorage.setItem("@userName", name)
+      await AsyncStorage.setItem("@userBio", bio)
+
+      const data = {
+        name: name,
+        biography: bio
+      }
+
+      console.log(data)
+      const emailResponse = await AsyncStorage.getItem('@email')
+
+      console.log(emailResponse)
+      
+      try {
+          const response = await api.patch(`/update/${emailResponse}`, data);
+          console.log(response.data);
+          navigation.navigate("PrivChat");
+      } catch (error) {
+          console.log(error);
+          Alert.alert("ERRO");
+      }
+  }
 
 
   const pickImage = async () => {
@@ -95,7 +128,7 @@ export default function CreateProfile() {
             </View>
           </View>
           <View>
-            <TouchableOpacity style={styles.buttonStyle}>
+            <TouchableOpacity style={styles.buttonStyle} onPress={submitProfile} >
               <Text style={styles.textInput}>Criar Perfil</Text>
             </TouchableOpacity>
           </View>
@@ -127,7 +160,7 @@ export default function CreateProfile() {
             placeholderTextColor={"white"} 
             placeholder='Nome'
             onChangeText={(item) => onReach_MAX_Length2(item)} // (text)=> setName(text)
-            //onChange={(text)=> setName(text)}
+            // onChange={(text)=> setName(text)}
             defaultValue={name}
             style={styles.textInput}>
             </TextInput>
@@ -143,7 +176,7 @@ export default function CreateProfile() {
           </View>
         </View>
         <View>
-          <TouchableOpacity style={styles.buttonStyle}  onPress={() => navigation.navigate('PrivChat')}>
+          <TouchableOpacity style={styles.buttonStyle}  onPress={submitProfile}>
             <Text style={styles.textInput}
         
             >

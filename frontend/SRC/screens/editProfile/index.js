@@ -12,8 +12,9 @@ import {
 import { Avatar } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
+import  AsyncStorage  from '@react-native-async-storage/async-storage';
 // import axios from 'axios'; // n usado ainda
-
+/*
 const onReach_MAX_Length1 = (temp) => {
   var tempLength = temp.length.toString();
 
@@ -28,12 +29,21 @@ const onReach_MAX_Length2 = (temp) => {
     Alert.alert('Limite de 50 caracteres atingido');
   }
 };
-
+*/
 export default function EditProfile() {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+
+  const userName =  AsyncStorage.getItem('@userName');
+  const userBio =   AsyncStorage.getItem('@userBio');
+
+  async function editSubmit(){
+
+  }
+
+
   useEffect(() => {
     (async () => {
       const galleryStatus =
@@ -41,6 +51,9 @@ export default function EditProfile() {
       setHasGalleryPermission(galleryStatus.status === 'granted');
     })();
   }, []); // perguntando se podemos ter acesso Às fotos
+  
+
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -53,11 +66,66 @@ export default function EditProfile() {
       setImage(result.uri);
     }
   };
+  
+
+
   if (hasGalleryPermission === false) {
-    return <Text>Sem acesso</Text>;
-  }
-  return (
-    <ImageBackground
+    return (
+      <ImageBackground
+      style={styles.imgBackground}>
+      <TouchableOpacity style={styles.backStyle}>
+          <Text style={styles.textBackStyle}>voltar</Text>
+      </TouchableOpacity>
+      <SafeAreaView style={styles.buzzBackgorund}>
+        <Text style={styles.textStyles}>Editar Perfil</Text>
+        <View>
+        {image && <Image source={{uri: image}}/>}
+          <TouchableOpacity
+            onPress={() => pickImage()}>
+            <Avatar.Image
+              source={{uri: image}}
+              size={130}
+              marginBottom={45}
+              style={styles.addImageButton}
+            />
+          </TouchableOpacity>
+          
+        </View>
+        <View>
+          <View style={styles.inputStyle}>
+            <TextInput
+              autoCorrect={false}
+              placeholderTextColor={'white'}
+              placeholder="Nome de usuário"
+              maxLength={50}
+              //onChangeText={(item) => onReach_MAX_Length2(item)}
+              onChangeText={value => setName(value)}
+              value={userName}
+              style={styles.textInput}>
+            </TextInput>
+          </View>
+          <View style={styles.inputStyle}>
+            <TextInput
+              placeholderTextColor={'white'}
+              placeholder="Biografia"
+              maxLength={120}
+              //onChangeText={(item) => onReach_MAX_Length1(item)}
+              onChangeText={value => setBio(value)}
+              value={userBio}
+              style={styles.textInput}></TextInput>
+          </View>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.buttonStyle}>
+            <Text style={styles.textInput}>Salvar</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
+    );
+  } else {
+    return (
+      <ImageBackground
       style={styles.imgBackground}>
       <TouchableOpacity style={styles.backStyle}>
           <Text style={styles.textBackStyle}>voltar</Text>
@@ -106,5 +174,7 @@ export default function EditProfile() {
         </View>
       </SafeAreaView>
     </ImageBackground>
-  );
+    )
+  }
+  
 }

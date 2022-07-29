@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Text, View, ImageBackground, TextInput, TouchableOpacity, AsyncStorageStatic, AsyncStorage, Alert} from 'react-native';
+import { Text, View, ImageBackground, TextInput, TouchableOpacity, AsyncStorageStatic, Alert} from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
@@ -44,82 +44,6 @@ const navigation = useNavigation();
       }
   }
 
-
-
-/*  
-  const signUp = async() => {
-    try {
-      const data = {
-        emailUser: email,
-        passwordUser: password,
-        biography: 'teste2',
-        name: 'testando2' 
-      }
-      const response = await axios.post('http://192.168.1.10:3000/signUp', data);
-      
-      const {user} = response.data;
-  
-      await AsyncStorage.multiSet([
-        ['@CodeApi: user', JSON.stringify(user)]  
-      ]);
-      console.log(response.data)
-    } catch(error){
-        console.log(error);
-    }
-  }
-*/  
-  
-  
-  
-  
-/*  
-  async function handleSubmit(){
-     
-      const data = {
-        emailUser: email,
-        passwordUser: password,
-        biography: 'teste2',
-        name: 'testando2' 
-      }
-
-      const response = axios.post("http://localhost:3000/signup", data)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log( error))
-      
-      if(response.status == 200){
-        Alert.alert('Usuário criado com sucesso.')
-      } else {
-        Alert.alert('Erro ao cadastrar usuário.')
-      }
-  }  
-*/ 
-
-/*
-  async function submit(event){
-    const signUp={
-      email, password  
-    }
-    const res =  await axios({
-      method: "POST",
-      url: `http://localhost:3000/signUp`,
-      headers: {
-          "content-Type": "aplication/json",
-      },
-      data: JSON.stringify(signUp)
-    })
-    .then((res) => res.json(res))
-    .catch(error => {
-      console.log(error);
-    })
-    if(res.status == 200){
-      const {token}=res.data;
-      await AsyncStorage.setItem("token",token);
-
-    }else{
-      Alert.alert('Email ja cadastrado')
-    }
-  }
-*/
   return (
     <ImageBackground source={require('../../../assets/purplebackground.png')} style={styles.imgBackground}>
       <TouchableOpacity style={styles.backStyle}>

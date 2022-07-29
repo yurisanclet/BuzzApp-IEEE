@@ -21,8 +21,7 @@ module.exports = {
 
   async create(name, email, password, biography) { // rota post, envio de formularios
       const user = await knex("users").select("*").where({email}).first(); // verificando se o usuario ja existe
-
-
+    
       const hash = await bcrypt.hash(password, 10);
       await knex("users").insert({ // inserindo no banco de dados.
         id: v4(), // gera um id aleatorio criptografado
@@ -35,24 +34,24 @@ module.exports = {
       return  "Usuário criado com sucesso!";
   },
 
-  async update(id, name,password, biography, emailToken) {
-      const user = await knex("users").select("*").where({id}).first();
-      const {email} = await knex("users").select("email").where({id}).first()
+  async update(emailUser, name, biography, email) {
+      const user = await knex("users").select("*").where({email:emailUser}).first();
+      // const {email} = await knex("users").select("email").where({email}).first()
 
       if(!user){
           throw new Error("Usuário não existe.");
       }
-
-      if (email !== emailToken){
+      //console.log(emailUser)
+      //console.log(name)
+      //console.log(biography)
+      if (email !== emailUser){
           throw new Error("Erro ao atualizar dados de outro usuário.");
       }
 
-      
-      const hash = await bcrypt.hash(password, 10);
-      await knex("users").where({id}).update({ // where({id}) para especificar o usuario a ser atualizado
+      await knex("users").where({email:emailUser}).update({ // where({email}) para especificar o usuario a ser atualizado
         name,
         biography,
-        password: hash 
+        email
       })
 
       return "Usuário atualizado."; 
