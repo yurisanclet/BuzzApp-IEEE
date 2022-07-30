@@ -41,6 +41,10 @@ export default function EditProfile() {
   const [bio, setBio] = useState("");
   const navigation = useNavigation();
   
+  const data = {
+     userName: AsyncStorage.getItem('@userName'),
+     userBio: AsyncStorage.getItem('@userBio')
+  }
 
   async function editSubmit(){
     const data = {
@@ -125,7 +129,7 @@ export default function EditProfile() {
               onChangeText={value => setName(value)}
               value={name}
               style={styles.textInput}>
-            </TextInput>
+            {data.userName}</TextInput>
           </View>
           <View style={styles.inputStyle}>
             <TextInput
@@ -135,7 +139,7 @@ export default function EditProfile() {
               //onChangeText={(item) => onReach_MAX_Length1(item)}
               onChangeText={value => setBio(value)}
               value={bio}
-              style={styles.textInput}></TextInput>
+              style={styles.textInput}>{data.userBio}</TextInput>
           </View>
         </View>
         <View>

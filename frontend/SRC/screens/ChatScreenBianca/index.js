@@ -90,6 +90,7 @@ const ChatScreenBianca = () => {
       scrollToBottom
       scrollToBottomComponent={scrollToBottomComponent}
       renderInputToolbar={this.renderInputToolbar} 
+      renderUsernameOnMessage
     />
   );
 };

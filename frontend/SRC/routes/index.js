@@ -10,7 +10,13 @@ import Menu from '../screens/menu'
 import EditProfile from '../screens/editProfile'
 import NewContact from '../screens/newContact'
 import NewGroup from '../screens/newGroup'
-import ChatScreen from '../screens/ChatScreen'
+import ChatPublico from '../screens/ChatPublico'
+import ChatScreenBianca from '../screens/ChatScreenBianca'
+import ChatScreenGabriel from '../screens/ChatScreenGabriel'
+import ChatScreenIsa from '../screens/ChatScreenIsa'
+import ChatScreenMateus from '../screens/ChatScreenMateus'
+import ChatScreenTerencio from '../screens/ChatScreenTerencio'
+import ChatScreenYuri from '../screens/ChatScreenYuri'
 
 const Stack = createNativeStackNavigator()
 
@@ -78,10 +84,40 @@ export default function Routes() {
       />
 
       <Stack.Screen
-        name="ChatScreen"
-        component={ChatScreen}
+        name="ChatScreenBianca"
+        component={ChatScreenBianca}
         options={{ headerShown: false }}
       />
+    
+    <Stack.Screen
+        name="ChatScreenGabriel"
+        component={ChatScreenGabriel}
+        options={{ headerShown: false }}
+    />
+    <Stack.Screen
+        name="ChatScreenIsa"
+        component={ChatScreenIsa}
+        options={{ headerShown: false }}
+    />
+    
+    <Stack.Screen
+        name="ChatScreenMateus"
+        component={ChatScreenMateus}
+        options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+        name="ChatScreenTerencio"
+        component={ChatScreenTerencio}
+        options={{ headerShown: false }}
+    />
+
+    <Stack.Screen
+        name="ChatScreenYuri"
+        component={ChatScreenYuri}
+        options={{ headerShown: false }}
+    />
+
     </Stack.Navigator>
   )
 }

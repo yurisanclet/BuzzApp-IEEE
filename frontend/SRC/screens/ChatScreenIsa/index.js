@@ -4,24 +4,24 @@ import {Bubble, GiftedChat, Send, InputToolbar} from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ChatScreen = () => {
+const ChatScreenIsa = () => {
   const [messages, setMessages] = useState([]);
   
   useEffect(() => {
     setMessages([
       {
         _id: 1,
-        text: 'Como vc ta?',
+        text: 'Ei, vc tá aí?',
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: 'Bianca Gallicchio',
+          name: 'Isabele Rocha',
           avatar: '',
         },
       },
       {
         _id: 2,
-        text: 'Oieee, ta td bem!',
+        text: 'To Ss!',
         createdAt: new Date(),
         user: {
           _id: 1,
@@ -90,8 +90,9 @@ const ChatScreen = () => {
       scrollToBottom
       scrollToBottomComponent={scrollToBottomComponent}
       renderInputToolbar={this.renderInputToolbar} 
+      renderUsernameOnMessage
     />
   );
 };
 
-export default ChatScreen;
+export default ChatScreenIsa;

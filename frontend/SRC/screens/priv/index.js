@@ -31,6 +31,11 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
+        <TouchableOpacity onPress={navigation.navigate('ChatScreenYuri')}>
+
+        </TouchableOpacity>
+      </View>
+      <View>
         <TouchableOpacity 
         style={styles.addButton}
         onPress={() => navigation.navigate('Menu')}
