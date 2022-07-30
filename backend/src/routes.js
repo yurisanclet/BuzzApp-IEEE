@@ -11,12 +11,13 @@ const auth = require('./middleware/auth');
 router.get("/listUsers", userController.findAll);
 router.get("/listUser/:id", auth.auth, userController.findOne);
 router.post("/signUp", userController.create);
+
 router.put("/update/:emailUser",auth.auth, userController.update);
 router.delete("/deleteUser/:email", auth.auth, userController.delete);
 router.post("/signIn", loginController.login);
 
 router.post("/addContact/:emailUser",auth.auth, contactController.create);
-router.get("/listContacts/:emailUser",auth.auth, contactController.findAll);
+router.get("/listContacts/:emailUser1",auth.auth, contactController.findAll);
 
 router.get("/listPrivateChats/:id", auth.auth, messageController.listPrivateChats);
 router.post("/sendMessage/:id", auth.auth, messageController.sendMessage);

@@ -3,8 +3,10 @@ const {verifyEmail} = require('../middleware/auth');
 
 module.exports = { // pegar as informações passadas nas rotas
     async findAll(req, res){
+        const {emailUser1} = req.params;
+        console.log(emailUser1);
         try {
-            const response = await contactService.findAll(req.params.emailUser);
+            const response = await contactService.findAll(emailUser1);
             return res.status(200).json(response);
         } catch (error) {
             return res.status(400).json({"error": error.message});

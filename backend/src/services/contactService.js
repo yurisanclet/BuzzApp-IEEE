@@ -7,12 +7,11 @@ module.exports = {
     let contacts = [];
 
     contactsArray.forEach((email, index) => {
-         contacts[index] = id.idUser2;
+         contacts[index] = email.emailUser2;
     });
-    console.log(contacts);
     return contacts;
   },
-  
+/*  
   async findOne(id) {
     const idUser2 = await knex("users").select("id").where({email}).first();
     const contact = await knex("contactOf").select("idUser2").where({idUser1: id}, {idUser2}).first();
@@ -24,7 +23,7 @@ module.exports = {
     
     return user;
   },
-
+*/
   async create(emailUser, emailAdd) { // rota post, envio de formularios
 
     /*const emailUser = await knex("users").select("*").where({email}).first(); // Usuário que chamou a função

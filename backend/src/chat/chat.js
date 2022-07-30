@@ -10,7 +10,7 @@ const ultimas_mensagens = []; // Lista com ultimas mensagens enviadas no chat
 
 // Função principal de resposta as requisições do servidor
 async function resposta (req, res) {
-	var arquivo = "";
+	let arquivo = "";
 	if(req.url == "/"){
 		arquivo = __dirname + '/index.html';
 	}else{
@@ -59,13 +59,13 @@ io.on("connection", function(socket){
 
 	socket.on("enviar mensagem", function(dados, callback){
 
-		var mensagem_enviada = dados.msg;
-		var usuario = dados.usu;
+		let mensagem_enviada = dados.msg;
+		let usuario = dados.usu;
 		if(usuario == null)
 			usuario = ''; // Caso não tenha um usuário, a mensagem será enviada para todos da sala
 
 		mensagem_enviada = "[ " + pegarDataAtual() + " ] " + socket.apelido + " diz: " + mensagem_enviada;
-		var obj_mensagem = {msg: mensagem_enviada, tipo: ''};
+		let obj_mensagem = {msg: mensagem_enviada, tipo: ''};
 
 		if(usuario == ''){
 			io.sockets.emit("atualizar mensagens", obj_mensagem);
