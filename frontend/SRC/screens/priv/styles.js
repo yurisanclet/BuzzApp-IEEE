@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#161618',
@@ -15,7 +17,8 @@ export const styles = StyleSheet.create({
     height: '7%',
     borderRadius: 8,
     alignItems: 'center',
-    margin: 20,
+    margin: 10,
+    marginTop: 10,
   },
 
   myText: {
@@ -28,18 +31,21 @@ export const styles = StyleSheet.create({
   buttonPrive: {
     backgroundColor: '#F5ECFA',
     width: '40%',
-    height: '16%',
+    height: '70%',
     alignItems: 'center',
     borderRadius: 8,
-    marginBottom: 200,
+    marginTop: 5,
+    margin: 10,
   },
 
   buttonPubli: {
     backgroundColor: '#212124',
     width: '40%',
-    height: '16%',
+    height: '70%',
     alignItems: 'center',
     borderRadius: 8,
+    marginTop: 5,
+    margin: 10,
   },
 
   priveText: {
@@ -51,25 +57,35 @@ export const styles = StyleSheet.create({
   publiText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#F5ECFA',    
+    color: '#F5ECFA',
     padding: 7,
   },
 
   addButton: {
     backgroundColor: '#991AD4',
-    width: '15%',
-    height: '13.5%',
+    width: 50,
+    height: 50,
     borderRadius: 50,
-    marginLeft: "80%",
-    marginTop: 300,
+    marginLeft: '80%',
+    marginTop: 30,
   },
 
-  addstyle:{
+  addstyle: {
     fontSize: 25,
-    padding: 20,
+    padding: 15,
     fontWeight: 'bold',
     color: '#F5ECFA',
     alignSelf: 'center',
     margin: -10,
+  },
+
+  msgBox: {
+    width: 371,
+    height: 71,
+    backgroundColor: '#333',
+    margin: 3,
+    borderRadius: 8,
+    borderBottomColor: '#444',
+    flexDirection: 'row',
   },
 });

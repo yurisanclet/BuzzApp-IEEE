@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {useState, useEffect} from 'react';
 
@@ -30,19 +29,63 @@ export default function PrivChat({router}) {
           <Text style={styles.publiText}>Publico</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <TouchableOpacity onPress={navigation.navigate('ChatScreenYuri')}>
-
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/terencio.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> João Terêncio </Text>
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity 
-        style={styles.addButton}
-        onPress={() => navigation.navigate('Menu')}
-        >
-          <Text style={styles.addstyle}>
-            
-          </Text>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/yuri.png.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Yuri dos Santos </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/bianca.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Bianca Gallicchio </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/gabriel.png.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Gabriel Costa </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/isabele.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Isabele Rocha </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/matheus.jpeg')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Matheus Pereira </Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('Menu')}>
+          <Text style={styles.addstyle}>+</Text>
         </TouchableOpacity>
       </View>
     </View>
