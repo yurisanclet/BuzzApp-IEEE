@@ -65,5 +65,15 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({"error":error.message});
         }
-    }
+    },
+    async getUserInfo(req, res){
+        const {email} = req.params;
+        
+        try {
+            const response = await userService.getUserInfo(email);
+            return res.status(200).json(response);
+        } catch (error) {
+            return res.status(400).json({"error":error.message});
+        }
+      }
 }

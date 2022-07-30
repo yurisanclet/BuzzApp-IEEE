@@ -10,6 +10,7 @@ const auth = require('./middleware/auth');
 
 router.get("/listUsers", userController.findAll);
 router.get("/listUser/:id", auth.auth, userController.findOne);
+router.get("/getInfo/:email", auth.auth, userController.getUserInfo);
 router.post("/signUp", userController.create);
 
 router.put("/update/:emailUser",auth.auth, userController.update);

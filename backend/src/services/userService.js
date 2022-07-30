@@ -80,5 +80,10 @@ module.exports = {
 
       await knex("users").where({email}).delete(); // where({id}) para especificar o usuario a ser deletado
       return "Usuário deletado";
+  },
+  async getUserInfo(email){
+
+    const infos = await knex("users").select("name", "biography").where({email}).first();
+    return infos;
   }
 }
