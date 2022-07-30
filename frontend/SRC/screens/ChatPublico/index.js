@@ -4,7 +4,7 @@ import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ChatScreen = () => {
+const ChatPublico = () => {
   const [messages, setMessages] = useState([]);
   
   useEffect(() => {
@@ -96,4 +96,4 @@ const ChatScreen = () => {
   );
 };
 
-export default ChatScreen;
+export default ChatPublico;

@@ -41,7 +41,7 @@ export default function EditProfile() {
   const [bio, setBio] = useState("");
   const navigation = useNavigation();
   
-  const data = {
+  const dataUser = {
      userName: AsyncStorage.getItem('@userName'),
      userBio: AsyncStorage.getItem('@userBio')
   }
@@ -129,7 +129,7 @@ export default function EditProfile() {
               onChangeText={value => setName(value)}
               value={name}
               style={styles.textInput}>
-            {data.userName}</TextInput>
+            </TextInput>
           </View>
           <View style={styles.inputStyle}>
             <TextInput
@@ -139,7 +139,7 @@ export default function EditProfile() {
               //onChangeText={(item) => onReach_MAX_Length1(item)}
               onChangeText={value => setBio(value)}
               value={bio}
-              style={styles.textInput}>{data.userBio}</TextInput>
+              style={styles.textInput}></TextInput>
           </View>
         </View>
         <View>
@@ -182,6 +182,7 @@ export default function EditProfile() {
               onChangeText={(item) => onReach_MAX_Length2(item)}
               defaultValue={name}
               style={styles.textInput}>
+              
             </TextInput>
           </View>
           <View style={styles.inputStyle}>
@@ -191,7 +192,9 @@ export default function EditProfile() {
               maxLength={120}
               onChangeText={(item) => onReach_MAX_Length1(item)}
               defaultValue={bio}
-              style={styles.textInput}></TextInput>
+              style={styles.textInput}>
+              
+              </TextInput>
           </View>
         </View>
         <View>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Avatar } from 'react-native-paper';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -24,8 +23,8 @@ export default function PubliChat() {
         </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/global.png')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatPublico')}>
+        <Avatar.Image source={require('../../../assets/global.png')}
               size={50}
               marginBottom={45}
               margin={10}/>

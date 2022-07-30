@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {useState, useEffect} from 'react';
+import { styles} from './styles'
+import { Avatar } from 'react-native-paper';
 
 export default function PrivChat({router}) {
   const navigation = useNavigation();
-  const [contacts, setContacts] = useState([]);
 
-  useEffect(() => {
-
-      const addContact = async () => {
-
-      }
-  })
 
   return (
     <View style={styles.container}>
@@ -30,8 +24,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/terencio.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenTerencio')}>
+        <Avatar.Image source={require('../../../assets/terencio.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>
@@ -39,8 +33,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/yuri.png.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenYuri')}>
+        <Avatar.Image source={require('../../../assets/yuri.png.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>
@@ -48,8 +42,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/bianca.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenBianca')}>
+        <Avatar.Image source={require('../../../assets/bianca.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>
@@ -57,8 +51,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/gabriel.png.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenGabriel')}>
+        <Avatar.Image source={require('../../../assets/gabriel.png.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>
@@ -66,8 +60,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/isabele.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenIsa')}>
+        <Avatar.Image source={require('../../../assets/isabele.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>
@@ -75,8 +69,8 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity style={styles.msgBox} alignItems="center">
-        <Avatar.Image source={require('/assets/matheus.jpeg')}
+        <TouchableOpacity style={styles.msgBox} alignItems="center" onPress={() => navigation.navigate('ChatScreenMateus')}>
+        <Avatar.Image source={require('../../../assets/matheus.jpeg')}
               size={50}
               marginBottom={45}
               margin={10}/>

@@ -118,6 +118,12 @@ export default function Routes() {
         options={{ headerShown: false }}
     />
 
+    <Stack.Screen
+        name="ChatPublico"
+        component={ChatPublico}
+        options={{ headerShown: false }}
+    />
+
     </Stack.Navigator>
   )
 }
