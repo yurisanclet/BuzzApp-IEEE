@@ -11,7 +11,7 @@ const ChatScreenIsa = () => {
     setMessages([
       {
         _id: 1,
-        text: 'Ei, vc tá aí?',
+        text: 'To Ss!',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -21,7 +21,7 @@ const ChatScreenIsa = () => {
       },
       {
         _id: 2,
-        text: 'To Ss!',
+        text: 'Ei, vc tá aí?',
         createdAt: new Date(),
         user: {
           _id: 1,

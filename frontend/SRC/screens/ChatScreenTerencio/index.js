@@ -4,14 +4,14 @@ import {Bubble, GiftedChat, Send, InputToolbar} from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const ChatScreen = () => {
+const ChatScreenTerencio = () => {
   const [messages, setMessages] = useState([]);
   
   useEffect(() => {
     setMessages([
       {
         _id: 1,
-        text: 'Cara, to vendo o filme aqui agr',
+        text: 'Tu vai amar, sério',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -21,7 +21,7 @@ const ChatScreen = () => {
       },
       {
         _id: 2,
-        text: 'Tu vai amar, sério',
+        text: 'Cara, to vendo o filme aqui agr',
         createdAt: new Date(),
         user: {
           _id: 1,

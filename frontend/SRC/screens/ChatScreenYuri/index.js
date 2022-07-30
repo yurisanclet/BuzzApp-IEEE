@@ -11,7 +11,7 @@ const ChatScreenYuri = () => {
     setMessages([
       {
         _id: 1,
-        text: 'Coe comprei sorvete',
+        text: 'EBAAAA',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -21,7 +21,7 @@ const ChatScreenYuri = () => {
       },
       {
         _id: 2,
-        text: 'EBAAAA',
+        text: 'Coe comprei sorvete',
         createdAt: new Date(),
         user: {
           _id: 1,

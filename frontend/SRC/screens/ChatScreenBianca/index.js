@@ -11,7 +11,7 @@ const ChatScreenBianca = () => {
     setMessages([
       {
         _id: 1,
-        text: 'Como vc ta?',
+        text: 'Oieee, ta td bem!',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -21,7 +21,7 @@ const ChatScreenBianca = () => {
       },
       {
         _id: 2,
-        text: 'Oieee, ta td bem!',
+        text: 'Como vc ta?',
         createdAt: new Date(),
         user: {
           _id: 1,

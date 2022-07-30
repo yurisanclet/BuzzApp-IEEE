@@ -11,7 +11,7 @@ const ChatScreenMateus = () => {
     setMessages([
       {
         _id: 1,
-        text: 'Ei, to quase aí!',
+        text: 'aaaa blz',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -21,7 +21,7 @@ const ChatScreenMateus = () => {
       },
       {
         _id: 2,
-        text: 'aaaa blz',
+        text: 'Ei, to quase aí!',
         createdAt: new Date(),
         user: {
           _id: 1,
