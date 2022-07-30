@@ -14,7 +14,7 @@ export default function PrivChat({router}) {
 
       }
   })
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.myBox}>
@@ -31,16 +31,12 @@ export default function PrivChat({router}) {
         </TouchableOpacity>
       </View>
       <View>
-        <Text>OLA MUNDO</Text>
-
-      </View>
-      <View>
         <TouchableOpacity 
         style={styles.addButton}
         onPress={() => navigation.navigate('Menu')}
         >
           <Text style={styles.addstyle}>
-            +
+            
           </Text>
         </TouchableOpacity>
       </View>

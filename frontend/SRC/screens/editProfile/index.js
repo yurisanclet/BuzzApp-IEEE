@@ -14,6 +14,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
 import  AsyncStorage  from '@react-native-async-storage/async-storage';
 import api from '../../../api';
+import { useNavigation } from '@react-navigation/native';
 // import axios from 'axios'; // n usado ainda
 
 /*
@@ -38,6 +39,7 @@ export default function EditProfile() {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+  const navigation = useNavigation();
   
 
   async function editSubmit(){
@@ -56,6 +58,7 @@ export default function EditProfile() {
     try {
         const response = await api.put(`/update/${emailResponse}`, data);
         console.log(response.data);
+        Alert.alert('Salvou!')
         navigation.navigate("PrivChat");
     } catch (error) {
         console.log(error);
@@ -136,7 +139,7 @@ export default function EditProfile() {
           </View>
         </View>
         <View>
-          <TouchableOpacity style={styles.buttonStyle}>
+          <TouchableOpacity onPress={editSubmit} style={styles.buttonStyle}>
             <Text style={styles.textInput}>Salvar</Text>
           </TouchableOpacity>
         </View>
