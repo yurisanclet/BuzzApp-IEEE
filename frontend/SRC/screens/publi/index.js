@@ -1,7 +1,10 @@
-import * as React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Avatar } from 'react-native-paper';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+
 
 export default function PubliChat() {
   const navigation = useNavigation();
@@ -20,11 +23,18 @@ export default function PubliChat() {
           <Text style={styles.publiText}>Publico</Text>
         </TouchableOpacity>
       </View>
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity style={styles.msgBox} alignItems="center">
+        <Avatar.Image source={require('/assets/global.png')}
+              size={50}
+              marginBottom={45}
+              margin={10}/>
+          <Text style={styles.myText}> Chat global </Text>
+        </TouchableOpacity>
+      </View>
       <View>
         <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('Menu')}>
-          <Text style={styles.addstyle}>
-            +
-          </Text>
+          <Text style={styles.addstyle}>+</Text>
         </TouchableOpacity>
       </View>
     </View>
